@@ -1,5 +1,4 @@
 #!flask/bin/python
-import simplejson as json
 from flask import Flask
 from flask import jsonify
 from os import system
