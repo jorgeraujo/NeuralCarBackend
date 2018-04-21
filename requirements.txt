@@ -27,7 +27,6 @@ django-mailchimp-v1.3==1.4.0
 django-nose==1.4.4
 django-npm==1.0.0
 django-webtest==1.8.0
-dnet==1.12
 docutils==0.13.1
 enum34==1.1.6
 environ==1.0
