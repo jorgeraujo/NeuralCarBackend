@@ -1,3 +1,3 @@
 # NeuralCarBackend
 
-Backend for Car make and model recognition app
+Backend for Car make and model recognition app.

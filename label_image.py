@@ -72,6 +72,44 @@ def load_labels(label_file):
   return label
 
 
+def call_comparation_function(file_path):
+    model_file = "/tmp/output_graph.pb"
+    label_file = "/tmp/output_labels.txt"
+    input_height = 299
+    input_width = 299
+    input_mean = 0
+    input_std = 255
+    input_layer = "Placeholder"
+    output_layer = "final_result"
+
+    graph = load_graph(model_file)
+    t = read_tensor_from_image_file(
+        file_path,
+        input_height=input_height,
+        input_width=input_width,
+        input_mean=input_mean,
+        input_std=input_std)
+
+    input_name = "import/" + input_layer
+    output_name = "import/" + output_layer
+    input_operation = graph.get_operation_by_name(input_name)
+    output_operation = graph.get_operation_by_name(output_name)
+
+    with tf.Session(graph=graph) as sess:
+      results = sess.run(output_operation.outputs[0], {
+          input_operation.outputs[0]: t
+      })
+    results = np.squeeze(results)
+    results_dict = []
+    top_k = results.argsort()[-5:][::-1]
+    labels = load_labels(label_file)
+    for i in top_k:
+      print(labels[i], results[i])
+      results_dict.append(tuple((labels[i], float(results[i]))))
+    return results_dict
+
+
+
 if __name__ == "__main__":
   file_name = "tensorflow/examples/label_image/data/grace_hopper.jpg"
   model_file = \
@@ -83,6 +121,8 @@ if __name__ == "__main__":
   input_std = 255
   input_layer = "input"
   output_layer = "InceptionV3/Predictions/Reshape_1"
+
+
 
   parser = argparse.ArgumentParser()
   parser.add_argument("--image", help="image to be processed")
