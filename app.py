@@ -7,15 +7,6 @@ import label_image
 app = Flask(__name__)
 
 
-tasks = [
-    {
-        'id': 1,
-        'brand': 'Opel',
-        'model': 'Corsa A',
-        'Conselho': 'foge'
-    }
-]
-
 @app.route('/')
 def index():
     return "Hell, World!"
