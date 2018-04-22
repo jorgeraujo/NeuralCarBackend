@@ -103,10 +103,14 @@ def call_comparation_function(file_path):
     results_dict = []
     top_k = results.argsort()[-5:][::-1]
     labels = load_labels(label_file)
+    highest = 0
     for i in top_k:
+        if results[i] > highest:
+            highest = results[i]
+            index_of_highest = i
       print(labels[i], results[i])
 
-    results_dict.append(tuple((labels[len(labels)-1], float(results[len(labels)-1]))))
+    results_dict.append(tuple((labels[index_of_highest], float(results[index_of_highest]))))
     return results_dict
 
 
