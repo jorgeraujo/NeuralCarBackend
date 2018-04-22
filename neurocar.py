@@ -11,6 +11,16 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+brand_models={}
+brand_models['hondansxna1'] = ("Honda","NSX")
+brand_models['opelcorsab'] = ("Opel","Corsa")
+brand_models['renaultclio iv'] = ("Renault","Clio IV")
+brand_models['porsche911 997'] = ("Porsche","991 997")
+brand_models['yamaha mt 07'] = ("Yamaha","MT-07")
+
+
+
+
 @app.route('/')
 def index():
     return "Hell, World!"
@@ -26,7 +36,8 @@ def recognize_car():
     i = requests.get(url)
     with iopen(img_name, 'wb') as file:
         file.write(i.content)
-    return jsonify((label_image.call_comparation_function(img_name)))
+    result = label_image.call_comparation_function(img_name)
+    return jsonify({"brand":brand_models[result[0][0]][0],"model":brand_models[result[0][0]][1],"accuracy":result[0][1]})
 
 
 if __name__ == '__main__':
