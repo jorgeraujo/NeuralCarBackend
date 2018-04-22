@@ -39,7 +39,8 @@ def recognize_car():
         file.write(i.content)
     result = label_image.call_comparation_function(img_name)
     so = wptools.page(brand_models[result[0][0]][0] + ' ' + brand_models[result[0][0]][1]).get_parse()
-    soN = json.dumps(so.__dict__)
+    soD = so.__dict__
+    soN = json.dumps(soD.decode("utf-8"))
     return jsonify({"brand":brand_models[result[0][0]][0],"model":brand_models[result[0][0]][1],"accuracy":result[0][1],"so":soN})
 
 
