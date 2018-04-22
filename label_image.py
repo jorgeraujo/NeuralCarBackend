@@ -105,7 +105,8 @@ def call_comparation_function(file_path):
     labels = load_labels(label_file)
     for i in top_k:
       print(labels[i], results[i])
-    results_dict.append(tuple((labels[0], float(results[0]))))
+
+    results_dict.append(tuple((labels[len(labels)-1], float(results[len(labels)-1]))))
     return results_dict
 
 
