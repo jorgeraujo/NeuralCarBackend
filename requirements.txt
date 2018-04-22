@@ -2,6 +2,8 @@ absl-py==0.2.0
 astor==0.6.2
 backports.weakref==1.0.post1
 bleach==1.5.0
+certifi==2018.4.16
+chardet==3.0.4
 click==6.7
 enum34==1.1.6
 Flask==0.12.2
@@ -12,6 +14,7 @@ gast==0.2.0
 grpcio==1.11.0
 gunicorn==19.7.1
 html5lib==0.9999999
+idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
 Markdown==2.6.11
@@ -20,8 +23,10 @@ mock==2.0.0
 numpy==1.14.2
 pbr==4.0.2
 protobuf==3.5.2.post1
+requests==2.18.4
 six==1.11.0
 tensorboard==1.7.0
 tensorflow==1.7.0
 termcolor==1.1.0
+urllib3==1.22
 Werkzeug==0.14.1
