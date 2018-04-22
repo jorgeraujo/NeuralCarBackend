@@ -23,8 +23,9 @@ def recognize_car():
     url = dataDict["url"]
     img_name = "image.jpg"
     f = open(img_name,'wb')
-    f.write(urllib.urlopen(url).read())
-    f.close()
+    i = requests.get(url)
+    with iopen(img_name, 'wb') as file:
+        file.write(i.content)
     return jsonify((label_image.call_comparation_function(img_name)))
 
 
