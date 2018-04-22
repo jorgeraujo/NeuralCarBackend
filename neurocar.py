@@ -17,6 +17,7 @@ brand_models['opelcorsab'] = ("Opel","Corsa")
 brand_models['renaultclio iv'] = ("Renault","Clio IV")
 brand_models['porsche911 997'] = ("Porsche","991 997")
 brand_models['yamaha mt 07'] = ("Yamaha","MT-07")
+brand_models['aixam 400'] = ("Aixam","400")
 
 
 
