@@ -38,9 +38,9 @@ def recognize_car():
     with iopen(img_name, 'wb') as file:
         file.write(i.content)
     result = label_image.call_comparation_function(img_name)
-    so = wptools.page(brand_models[result[0][0]][0] + ' ' + brand_models[result[0][0]][1]).get_parse()
-    soN = json.dumps(so.__dict__).decode("utf-8")
-    return jsonify({"brand":brand_models[result[0][0]][0],"model":brand_models[result[0][0]][1],"accuracy":result[0][1],"so":soN})
+    #so = wptools.page(brand_models[result[0][0]][0] + ' ' + brand_models[result[0][0]][1]).get_parse()
+    #soN = json.dumps(so.__dict__).decode("utf-8")
+    return jsonify({"brand":brand_models[result[0][0]][0],"model":brand_models[result[0][0]][1],"accuracy":result[0][1]})
 
 
 if __name__ == '__main__':
