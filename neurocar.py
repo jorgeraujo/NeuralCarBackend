@@ -7,6 +7,7 @@ import requests
 from io import open as iopen
 import urllib as urllib
 import json
+import wptools
 
 app = Flask(__name__)
 CORS(app)
@@ -37,7 +38,8 @@ def recognize_car():
     with iopen(img_name, 'wb') as file:
         file.write(i.content)
     result = label_image.call_comparation_function(img_name)
-    return jsonify({"brand":brand_models[result[0][0]][0],"model":brand_models[result[0][0]][1],"accuracy":result[0][1]})
+    so = wptools.page(brand_models[result[0][0]][0] + ' ' + brand_models[result[0][0]][1]).get_parse()
+    return jsonify({"brand":brand_models[result[0][0]][0],"model":brand_models[result[0][0]][1],"accuracy":result[0][1],"infobox":so.infobox})   
 
 
 if __name__ == '__main__':
