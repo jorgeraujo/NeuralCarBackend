@@ -7,7 +7,6 @@ import requests
 from io import open as iopen
 import urllib as urllib
 import json
-import wptools
 
 app = Flask(__name__)
 CORS(app)
