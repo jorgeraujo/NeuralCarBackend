@@ -5,7 +5,6 @@ import label_image
 from flask_cors import CORS
 import requests
 from io import open as iopen
-from urlparse import urlsplit
 import urllib as urllib
 import json
 
